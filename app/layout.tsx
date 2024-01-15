@@ -8,27 +8,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-      <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=G-WRZ1P8RSZY"></Script>
-      <Script strategy='afterInteractive' id='google-analytics'>
-        {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <>
+      <div className={`${inter.className} antialiased`}>{children}</div>
+      <Script
+        strategy='afterInteractive'
+        src="https://www.googletagmanager.com/gtag/js?id=G-WRZ1P8RSZY"
+      ></Script>
+      <Script
+        strategy='afterInteractive'
+        id='google-analytics'
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WRZ1P8RSZY');
+          `,
+        }}
+      />
 
-        gtag('config', 'G-WRZ1P8RSZY');`}
-      </Script>
-    </html>
+    </>
   );
 }
-/**
- * <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WRZ1P8RSZY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WRZ1P8RSZY');
-</script>
- */
