@@ -9,6 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body>
       <Script strategy='afterInteractive' src="https://www.googletagmanager.com/gtag/js?id=G-WRZ1P8RSZY"></Script>
       <Script strategy='afterInteractive' id='google-analytics'>
         {`window.dataLayer = window.dataLayer || [];
@@ -17,7 +18,6 @@ export default function RootLayout({
 
         gtag('config', 'G-WRZ1P8RSZY');`}
       </Script>
-      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }
